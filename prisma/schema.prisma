@@ -14,12 +14,22 @@ datasource db {
 }
 
 model Users {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   fname       String
   lname       String
-  email       String @unique
+  email       String  @unique
   password    String
-  profile     String @db.LongText
-  cover       String @db.LongText
-  discription String @default("hey there!!!")
+  profile     String  @db.LongText
+  cover       String  @db.LongText
+  discription String  @default("hey there!!!")
+  posts       Posts[]
+}
+
+model Posts {
+  id       String   @id @default(uuid())
+  content  String   @db.LongText
+  image    String   @db.LongText
+  postedAt DateTime @default(now())
+  author   Users    @relation(fields: [authorId], references: [id])
+  authorId String
 }

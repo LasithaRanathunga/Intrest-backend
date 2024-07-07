@@ -48,6 +48,9 @@ export default class User {
         where: {
           email: email,
         },
+        include: {
+          posts: true,
+        },
       });
       return user;
     } catch (error) {

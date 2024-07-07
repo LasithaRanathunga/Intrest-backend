@@ -11,7 +11,6 @@ export async function signin(req, res, next) {
     const user = await User.getUniqueUserByEmail(req.body.email);
 
     if (!user) {
-      console.log("***", req.body);
       const result = validationResult(req);
       if (result.isEmpty()) {
         const user = new User(

@@ -22,5 +22,6 @@ export default (req, res, next) => {
   }
 
   req.email = decodedToken.email;
+  req.id = decodedToken.id;
   next();
 };
