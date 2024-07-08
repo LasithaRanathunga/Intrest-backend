@@ -30,6 +30,12 @@ export async function updateUser(req, res, next) {
   console.log(req.body);
   if (Array.isArray(req.body.files) && req.body.files.length >= 2) {
     // Assuming req.files is an array of Express.Multer.File
+    if (req.body.fname) {
+      data.fname = req.body.fname;
+    }
+    if (req.body.lname) {
+      data.lname = req.body.lname;
+    }
     if (req.body.files[0]) {
       data.profile = req.body.files[0];
     }
